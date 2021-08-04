@@ -8,10 +8,16 @@ class MyBottomBar extends StatelessWidget {
   final Color colorLiveView;
   final Color colorProfile;
 
-  const MyBottomBar({this.onTap, this.colorBluetooth, this.colorFocus, this.colorLiveView, this.colorProfile});
+  const MyBottomBar(
+      {this.onTap,
+      this.colorBluetooth,
+      this.colorFocus,
+      this.colorLiveView,
+      this.colorProfile});
 
   @override
   Widget build(BuildContext context) {
+    print("*** MyBottomBar");
     return ConvexAppBar(
       items: [
         TabItem(
@@ -27,9 +33,7 @@ class MyBottomBar extends StatelessWidget {
               color: colorFocus,
             ),
             title: 'Focus'),
-        TabItem(
-            icon: Icons.camera,
-            title: 'Capture'),
+        TabItem(icon: Icons.camera, title: 'Capture'),
         TabItem(
             icon: Icon(
               Icons.photo_camera_outlined,

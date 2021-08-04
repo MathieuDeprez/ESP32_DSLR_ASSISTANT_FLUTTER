@@ -19,10 +19,18 @@ import 'package:flutter/material.dart';
 // Color mySecondColor = Color(0xffFF8C64);
 // Color mySecondColorAccent = Color(0xffFF665A);
 // Color myThirdColor = Color(0xffFFF587);
-
+/*
 Color myMainColor = Color(0xFF25C7D9);
 Color myMainColorAccent = Color(0xff248EA6);
 Color mySecondColor = Color(0xffF2762E);
 Color mySecondColorAccent = Color(0xffF23030);
 Color myThirdColor = Color(0xffF2D338);
+Color myGreyColor = Colors.grey;*/
+
+Color myMainColor = Color(0xFF25C7D9);
+Color myMainColorAccent = Color(0xff248EA6);
+Color mySecondColor = Colors.white;
+Color mySecondColorAccent = Color(0xffF23030);
+Color myThirdColor = Color(0xffF2D338);
 Color myGreyColor = Colors.grey;
+Color mydarkColor = Color(0xFF005254);

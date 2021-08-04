@@ -8,9 +8,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_app_01/main.dart';
+import 'package:esp32_dslr_assistant_flutter/main.dart';
 
-void main() {
+/*void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp());
@@ -27,4 +27,4 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
-}
+}*/

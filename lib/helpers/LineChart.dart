@@ -98,7 +98,7 @@ class LineChart extends StatelessWidget {
     this.additionalMinimalHorizontalLabelsInterval = 8,
     this.additionalMinimalVerticalLablesInterval = 8,
     Iterable<PaintStyle>
-    seriesPointsStyles, // null would use predefined set of styles
+        seriesPointsStyles, // null would use predefined set of styles
     Iterable<PaintStyle> seriesLinesStyles, // null for default
   })  : horizontalLinesPaint = horizontalLinesStyle?.toPaint(),
         verticalLinesPaint = verticalLinesStyle?.toPaint(),
@@ -151,28 +151,29 @@ class LineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("*** LineChart");
     return ConstrainedBox(
         constraints: this.constraints,
         child: CustomPaint(
             painter: _LineChartPainter(
-              padding: padding,
-              arguments: arguments,
-              argumentsLabels: argumentsLabels,
-              values: values,
-              valuesLabels: valuesLabels,
-              horizontalLabelsTextStyle:
+          padding: padding,
+          arguments: arguments,
+          argumentsLabels: argumentsLabels,
+          values: values,
+          valuesLabels: valuesLabels,
+          horizontalLabelsTextStyle:
               horizontalLabelsTextStyle ?? Theme.of(context).textTheme.caption,
-              verticalLabelsTextStyle:
+          verticalLabelsTextStyle:
               verticalLabelsTextStyle ?? Theme.of(context).textTheme.caption,
-              horizontalLinesPaint: horizontalLinesPaint,
-              verticalLinesPaint: verticalLinesPaint,
-              additionalMinimalHorizontalLabelsInterval:
+          horizontalLinesPaint: horizontalLinesPaint,
+          verticalLinesPaint: verticalLinesPaint,
+          additionalMinimalHorizontalLabelsInterval:
               additionalMinimalHorizontalLabelsInterval,
-              additionalMinimalVerticalLablesInterval:
+          additionalMinimalVerticalLablesInterval:
               additionalMinimalVerticalLablesInterval,
-              seriesPointsPaints: seriesPointsPaints,
-              seriesLinesPaints: seriesLinesPaints,
-            )));
+          seriesPointsPaints: seriesPointsPaints,
+          seriesLinesPaints: seriesLinesPaints,
+        )));
   }
 }
 
@@ -256,8 +257,8 @@ class _LineChartPainter extends CustomPainter {
     @required this.seriesPointsPaints,
     @required this.seriesLinesPaints,
   }) : this.minimalHorizontalLabelsInterval =
-      horizontalLabelsTextStyle.fontSize +
-          additionalMinimalHorizontalLabelsInterval {
+            horizontalLabelsTextStyle.fontSize +
+                additionalMinimalHorizontalLabelsInterval {
     // Find max & min values of data to be show
     for (Iterable<double> series in values) {
       for (double value in series) {
@@ -302,7 +303,7 @@ class _LineChartPainter extends CustomPainter {
                 .width;
 
         final double goodRatio = ((lastWidth + nextWidth) / 2 +
-            additionalMinimalVerticalLablesInterval) /
+                additionalMinimalVerticalLablesInterval) /
             (nextValue - lastValue);
         if (goodRatio > _minimalHorizontalRatio) {
           _minimalHorizontalRatio = goodRatio;
@@ -329,7 +330,7 @@ class _LineChartPainter extends CustomPainter {
       // If no labels provided - generate them!
       if (valuesLabels == null) {
         final double optimalStepValue =
-        _calculateOptimalStepValue(maxValue - minValue, height);
+            _calculateOptimalStepValue(maxValue - minValue, height);
         int stepsNumber = 1;
 
         // Find bottom line value

@@ -3,17 +3,19 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:esp32_dslr_assistant_flutter/models/DslrSettingsProvider.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 import 'ItemList.dart';
 
 class BluetoothUtils {
-  static sendDslrValue(ItemListClass itemList, BluetoothConnection connection) {
-    List<int> bytesString = utf8.encode(itemList.selectedValue);
+  static sendDslrValue(
+      SettingModel settingModel, BluetoothConnection connection) {
+    List<int> bytesString = utf8.encode(settingModel.selectedValue);
     print(bytesString);
     final bytesBuilder = BytesBuilder();
     bytesBuilder.add([
-      utf8.encode(itemList.prefix)[0],
+      utf8.encode(settingModel.prefix)[0],
     ]);
     for (int i = 0; i < bytesString.length; i++) {
       bytesBuilder.add([
@@ -44,8 +46,7 @@ class BluetoothUtils {
       try {
         connection.output.add(utf8.encode(text + "\r\n"));
         await connection.output.allSent;
-      } catch (e) {
-      }
+      } catch (e) {}
     }
   }
 }

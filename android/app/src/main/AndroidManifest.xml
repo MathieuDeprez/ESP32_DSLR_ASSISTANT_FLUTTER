@@ -1,8 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_app_01">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    
    <application
         android:label="flutter_app_01"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/launcher_icon"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

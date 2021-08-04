@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print("*** SecondRoute");
     return Scaffold(
       appBar: AppBar(
         title: Text("Second Route"),
