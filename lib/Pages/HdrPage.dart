@@ -107,8 +107,8 @@ class _HdrPageState extends State<HdrPage> {
               ),
               NumberPhotoWidget("Number of photos", data.hdrNumber.toString(),
                   minusHdrNumber, addHdrNumber),
-              NumberPhotoWidget("Exposition pas", data.hdrPas.toString(),
-                  minusHdrPas, addHdrPas),
+              NumberPhotoWidget(
+                  "Increment", data.hdrPas.toString(), minusHdrPas, addHdrPas),
               NumberPhotoWidget("Offset", data.hdrOffset.toString(),
                   minusHdrOffset, addHdrOffset),
               Consumer<DslrSettingsProvider>(builder: (context, data, child) {

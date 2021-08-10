@@ -27,7 +27,7 @@ class _TimeLapsePageState extends State<TimeLapsePage>
   int _fpsNumer = 24;
   int _initialTime = 60;
   int _finalTime = 10;
-  String _indexParameter = "Durée initiale/finale";
+  String _indexParameter = "Final/Initial duration";
   int _factorMult = 1;
   double _rawDelay = 1;
   double finalDelay = 1;
@@ -57,82 +57,83 @@ class _TimeLapsePageState extends State<TimeLapsePage>
     print("*** BUILD TimeLapsePage");
     return Column(
       children: [
-        Container(
-          color: Colors.teal,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 20),
-                myDropDownMenu(fixParameterChangeFct, _indexParameter),
-                Container(
-                  decoration: BoxDecoration(
-                      color: Color(0x5fffffff),
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.symmetric(vertical: 10),
+        Expanded(
+          child: Container(
+            color: Colors.teal,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  myDropDownMenu(fixParameterChangeFct, _indexParameter),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Color(0x5fffffff),
+                        borderRadius: BorderRadius.all(Radius.circular(30))),
+                    margin: EdgeInsets.all(10),
+                    padding: EdgeInsets.symmetric(vertical: 10),
 
-                  //Durée initiale/finale
-                  child: _indexParameter == "Durée initiale/finale"
-                      ? Column(
-                          children: [
-                            Row(
-                              children: [
-                                myTimeLapseParameter(
-                                    "Durée initiale (s)",
-                                    changeInitialTime,
-                                    1,
-                                    _initialTime.toString()),
-                                myTimeLapseParameter("Durée finale (s)",
-                                    changeFinalTime, 1, _finalTime.toString()),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(child: Container()),
-                                myTimeLapseParameter(
-                                    "Fps", changeFps, 2, _fpsNumer.toString()),
-                                Expanded(child: Container()),
-                              ],
-                            ),
-                          ],
-                        )
-                      : _indexParameter == "Facteur multiplicateur"
-                          ? Container(
-                              child: Row(
+                    //Durée initiale/finale
+                    child: _indexParameter == "Final/Initial duration"
+                        ? Column(
+                            children: [
+                              Row(
                                 children: [
                                   myTimeLapseParameter(
-                                      "Facteur multiplicateur",
-                                      changeFactorMult,
+                                      "Initial duration",
+                                      changeInitialTime,
                                       1,
-                                      _factorMult.toString()),
-                                  myTimeLapseParameter("Fps", changeFps, 1,
+                                      _initialTime.toString()),
+                                  myTimeLapseParameter(
+                                      "Final duration",
+                                      changeFinalTime,
+                                      1,
+                                      _finalTime.toString()),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(child: Container()),
+                                  myTimeLapseParameter("Fps", changeFps, 2,
                                       _fpsNumer.toString()),
+                                  Expanded(child: Container()),
                                 ],
                               ),
-                            )
-                          : Container(
-                              padding: EdgeInsets.symmetric(horizontal: 80),
-                              child: Row(
-                                children: [
-                                  myTimeLapseParameter(
-                                      "Delais (s)",
-                                      changeRawDelay,
-                                      1,
-                                      _rawDelay.toStringAsFixed(3)),
-                                ],
+                            ],
+                          )
+                        : _indexParameter == "Multiplying factor"
+                            ? Container(
+                                child: Row(
+                                  children: [
+                                    myTimeLapseParameter(
+                                        "Multiplying factor",
+                                        changeFactorMult,
+                                        1,
+                                        _factorMult.toString()),
+                                    myTimeLapseParameter("Fps", changeFps, 1,
+                                        _fpsNumer.toString()),
+                                  ],
+                                ),
+                              )
+                            : Container(
+                                padding: EdgeInsets.symmetric(horizontal: 80),
+                                child: Row(
+                                  children: [
+                                    myTimeLapseParameter(
+                                        "Delay",
+                                        changeRawDelay,
+                                        1,
+                                        _rawDelay.toStringAsFixed(3)),
+                                  ],
+                                ),
                               ),
-                            ),
-                ),
-                Text(
-                    "Une photo sera prise toutes les ${finalDelay.toStringAsFixed(3)}s"),
-              ],
+                  ),
+                  Text(
+                      "A photo will be taken every ${finalDelay.toStringAsFixed(3)}s"),
+                ],
+              ),
             ),
           ),
         ),
-        Expanded(
-            child: Container(
-          color: Colors.teal,
-        )),
         Consumer<LiveViewLongExpoModel>(
           builder: (context, prov, child) {
             return Container(
@@ -175,11 +176,11 @@ class _TimeLapsePageState extends State<TimeLapsePage>
   }
 
   calculDelay() {
-    if (_indexParameter == "Durée initiale/finale") {
+    if (_indexParameter == "Final/Initial duration") {
       finalDelay = calculDureeIniFinal();
-    } else if (_indexParameter == "Facteur multiplicateur") {
+    } else if (_indexParameter == "Multiplying factor") {
       finalDelay = calculDureeFactor();
-    } else if (_indexParameter == "Delais brut") {
+    } else if (_indexParameter == "Raw delay") {
       finalDelay = _rawDelay;
     }
     setState(() {});
@@ -282,13 +283,13 @@ Widget myTimeLapseParameter(
               initialValue: initialValue,
               onChanged: (text) {
                 if (double.tryParse(text) != null) {
-                  if (title == "Delais (s)") {
+                  if (title == "Delay") {
                     changeValueFct(double.parse(text));
                   } else {
                     changeValueFct(int.parse(text));
                   }
                 } else {
-                  if (title == "Delais (s)") {
+                  if (title == "Delay") {
                     changeValueFct(0.0);
                   } else {
                     changeValueFct(0);
@@ -340,9 +341,9 @@ Widget myDropDownMenu(Function changeFct, String value) {
             //value = newValue;
           },
           items: <String>[
-            'Durée initiale/finale',
-            'Facteur multiplicateur',
-            'Delais brut'
+            'Final/Initial duration',
+            'Multiplying factor',
+            'Raw delay'
           ].map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,

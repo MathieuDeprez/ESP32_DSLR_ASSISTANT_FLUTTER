@@ -72,7 +72,7 @@ class _ControlPageState extends State<ControlPage> {
               MainControlWidget(),
               Divider(color: Colors.black),
               Text(
-                "Exposition Bias",
+                "Exposure Compensation",
                 style: TextStyle(
                     color: mySecondColor, fontWeight: FontWeight.bold),
               ),

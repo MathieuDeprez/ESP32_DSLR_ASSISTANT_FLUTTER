@@ -473,14 +473,15 @@ class BluetoothProvider with ChangeNotifier {
       String photoTime = objectHandlesModel.time;
 
       Random random = new Random();
-      final directory = (await ExtStorage.getExternalStorageDirectory());
-      File imgFile = File('$directory/Pictures/DslrAssistant/' +
-          photoName.substring(0, photoName.length - 4) +
-          "_" +
-          /*photoTime +
+      //final directory = (await ExtStorage.getExternalStorageDirectory());
+      File imgFile = File(
+          '${_browserModel.path.substring(12, _browserModel.path.length - 1)}/' +
+              photoName.substring(0, photoName.length - 4) +
+              "_" +
+              /*photoTime +
           "_" +*/
-          random.nextInt(10000).toString() +
-          '.jpg');
+              random.nextInt(10000).toString() +
+              '.jpg');
       print("path: ${imgFile.toString()}");
       _browserModel.JpegDownloaded();
       imgFile.writeAsBytesSync(image);

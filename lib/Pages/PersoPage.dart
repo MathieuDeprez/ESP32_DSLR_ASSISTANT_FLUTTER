@@ -317,11 +317,11 @@ class _PersoPage extends State<PersoPage> with TickerProviderStateMixin {
                     //icon: Icon(Icons.blur_circular),
                   ),
                   Tab(
-                    text: "TimeLapse",
+                    text: "Timelapse",
                     //icon: Icon(Icons.timelapse),
                   ),
                   Tab(
-                    text: "Browser",
+                    text: "Library",
                     //icon: Icon(Icons.timelapse),
                   )
                 ],

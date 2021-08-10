@@ -1,16 +1,28 @@
-# flutter_app_01
+# ESP32 DSLR ASSISTANT FLUTTER
+## ESP32 Code
 
-A new Flutter application.
+ESP32 DSLR Assistant is a project that allows you to control your DSLR with an ESP32.
+The microcontroller can be connected to a smartphone with Bluetooth or it can be controlled with push buttons and an oled display.
 
-## Getting Started
+## Youtube Video
+https://youtu.be/B7YC7_dWGt4
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Smartphone (Flutter) Application available to control the camera
+- Nikon D3300 DSLR camera supported
+- SSD1331 Oled display and push buttons
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## ESP32 Code
+- GitHub : https://github.com/MathieuDeprez/ESP32_DSLR_ASSISTANT/tree/Stable_01
+- Functions available
+-- Long exposure
+-- HDR
+-- Focus stacking
+-- Timelapse
+-- Library
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Library used 
+- PTP_2.0 by Felis: https://github.com/felis/PTP_2.0
+- USB_Host_Shield_2.0 by Felis: https://github.com/felis/USB_Host_Shield_2.0
+- SSD_13XX by Sumotoy: https://github.com/sumotoy/SSD_13XX

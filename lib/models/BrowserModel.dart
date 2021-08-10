@@ -9,6 +9,15 @@ class BrowserModel with ChangeNotifier {
   String _handleDownloading = "";
   bool _downloadingList = false;
 
+  String _path = "/Pictures/DslrAssistant/";
+  String pathKey = "pathKeyStorage";
+
+  String get path => _path;
+  set path(String path) {
+    _path = path;
+    notifyListeners();
+  }
+
   set downloadingList(bool state) {
     _downloadingList = state;
   }

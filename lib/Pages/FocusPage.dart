@@ -28,7 +28,7 @@ import '../widgets/MainControlWidget.dart';
 import '../widgets/SelectorWidget.dart';
 
 //import 'package:opencv/opencv.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+//import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 import '../models/BluetoothProvider.dart';
 
