@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     
    <application
-        android:label="flutter_app_01"
+        android:label="Dslr Assistant"
         android:icon="@mipmap/launcher_icon"
         android:requestLegacyExternalStorage="true">
         <activity
